@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import TextSelectionPlayer from "./playButton";
 
 const App = () => {
   const [selectedWord, setSelectedWord] = useState(null);
@@ -756,12 +757,6 @@ const App = () => {
     "grammar": "глагол, прошедшее время, 3 лицо, ед. число, женский род",
     "note": "от 'uhladit' — разгладить, пригладить (например, перья)",
     "comparison": "Как в русском: пригладить волосы или перья"
-  },
-  "ho": {
-    "ru": "его",
-    "grammar": "местоимение, винительный падеж, ед. число, муж./ср. род",
-    "note": "короткая форма от 'jeho', используется после глагола",
-    "comparison": "Как в русском: его (утёнка)"
   },
   "pěkně": {
     "ru": "красиво, аккуратно, хорошо",
@@ -2624,11 +2619,12 @@ Teď slyšela všechny říkat, že je nejkrásnější ze všech těch překrá
 
         <div className="bg-white rounded-lg shadow-lg p-6">
           <div className="prose max-w-none">
+            <TextSelectionPlayer>
             {paragraphs.map((paragraph, index) => (
               <div key={index} className="mb-4">
-                <p className="text-lg leading-relaxed text-gray-800">
-                  {highlightVocabulary(paragraph)}
-                </p>
+                  <p className="text-lg leading-relaxed text-gray-800">
+                    {highlightVocabulary(paragraph)}
+                  </p>
                 {showTranslation && (
                   <p className="text-sm text-gray-600 mt-2 italic border-l-4 border-blue-200 pl-4">
                     {translation[index] || ""}
@@ -2637,6 +2633,7 @@ Teď slyšela všechny říkat, že je nejkrásnější ze všech těch překrá
                 )}
               </div>
             ))}
+            </TextSelectionPlayer>
           </div>
         </div>
 
