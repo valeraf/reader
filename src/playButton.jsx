@@ -7,13 +7,11 @@ const TextSelectionPlayer = ({ children }) => {
   const [playButtonPosition, setPlayButtonPosition] = useState({ x: 0, y: 0 });
   const textContainerRef = useRef(null);
   const playerRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [audioUrl, setAudioUrl] = useState(null);
-
+  
   useEffect(() => {
     const handleSelectionChange = () => {
       const selection = window.getSelection();
-
       if (selection.rangeCount > 0 && !selection.isCollapsed) {
         const range = selection.getRangeAt(0);
         const selectedText = selection.toString().trim();
@@ -153,8 +151,10 @@ const TextSelectionPlayer = ({ children }) => {
   return (
     <div className="">
         {audioUrl && 
-            <div className="absolute top-0 left-0 w-full h-full z-50 pointer-events-none">
-                <AudioPlayer autoPlay={true} onEnd={() => setAudioUrl(null)} src={audioUrl} />
+            <div className="fixed bottom-0 left-0 justify-content-center w-full bg-white p-3 right-0 d-flex z-50">
+                <AudioPlayer style={{width: '400px'}} src={audioUrl} autoPlay={true} onEnd={() => setAudioUrl(null)}  ref={(element) => { 
+                  playerRef.current = element;
+                }}  />
             </div>
         }
       <div
