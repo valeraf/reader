@@ -152,7 +152,7 @@ const TextSelectionPlayer = ({ children }) => {
     <div className="">
         {audioUrl && 
             <div className="fixed bottom-0 left-0 justify-content-center w-full bg-white p-3 right-0 d-flex z-50">
-                <AudioPlayer style={{width: '400px'}} src={audioUrl} autoPlay={true} onEnd={() => setAudioUrl(null)}  ref={(element) => { 
+                <AudioPlayer style={{width: '400px'}} src={audioUrl} autoPlay={true} ref={(element) => { 
                   playerRef.current = element;
                 }}  />
             </div>
